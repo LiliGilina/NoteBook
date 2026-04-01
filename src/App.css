@@ -382,3 +382,14 @@
     width: 100%;
   }
 }
+.key-label {
+  display: inline-flex;
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(45, 212, 191, 0.12);
+  border: 1px solid rgba(94, 234, 212, 0.18);
+  color: #ccfbf1;
+  font-size: 14px;
+  font-weight: 600;
+}

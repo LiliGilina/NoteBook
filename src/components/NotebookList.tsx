@@ -22,6 +22,9 @@ export default function NotebookList({ sessions, onDelete }: Props) {
                   <p className="muted">
                     {new Date(session.createdAt).toLocaleString()}
                   </p>
+                  <p className="key-label">
+                    Key: {session.detectedKey ?? 'Unknown'}
+                  </p>
                 </div>
 
                 <button

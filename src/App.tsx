@@ -5,6 +5,7 @@ import CurrentSession from './components/CurrentSession';
 import NotebookList from './components/NotebookList';
 import { usePitchDetector } from './hooks/usePitchDetector';
 import { deleteSession, getSessions, saveSession } from './lib/db';
+import { detectKey } from './lib/keyDetection';
 import type { SessionEntry } from './types';
 
 export default function App() {
@@ -41,11 +42,14 @@ export default function App() {
   const handleSave = async () => {
     if (capturedNotes.length === 0) return;
 
+    const detectedKey = detectKey(capturedNotes);
+
     const entry: SessionEntry = {
       id: crypto.randomUUID(),
       title: title.trim() || `Session ${new Date().toLocaleString()}`,
       createdAt: new Date().toISOString(),
       notes: capturedNotes,
+      detectedKey: detectedKey ?? undefined,
     };
 
     await saveSession(entry);
@@ -69,7 +73,7 @@ export default function App() {
             </div>
 
             <div className="brand-copy">
-              <small>single-note tracker</small>
+              <small>Hum, sing, play, and have fun</small>
               <h1>NoteBook</h1>
             </div>
           </div>
@@ -81,7 +85,8 @@ export default function App() {
         </div>
 
         <p>
-          Hum, sing, play and have fun ^^  
+          Capture your melody into a clean notebook,
+          and keep everything stored locally in your browser.
         </p>
       </header>
 

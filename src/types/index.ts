@@ -9,4 +9,5 @@ export type SessionEntry = {
   title: string;
   createdAt: string;
   notes: PlayedNote[];
+  detectedKey?: string;
 };
